@@ -18,23 +18,29 @@ class _mainScreenState extends State<mainScreen> {
     _controller.dispose();
     super.dispose();
   }
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Qr code not")),
-      body: Container(
-        padding: EdgeInsets.all(20),
-        child: Column(children: [
-          SizedBox(height: 15,),
-          TextFormField(
-            controller: _controller,
-            decoration : const InputDecoration(
-              hintText: "Digite algo",
-              labelText: "QrCode generator",
-              border: OutlineInputBorder(),
-              suffixIcon: Icon(Icons.ballot),
-            )
-          ),
-          SizedBox(height: 10,),
+        appBar: AppBar(title: const Text("Qr code not")),
+        body: Container(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 15,
+                ),
+                TextFormField(
+                  controller: _controller,
+                  decoration: const InputDecoration(
+                      hintText: "Digite algo",
+                      labelText: "Qr code decorator",
+                      //errorText: "Sua capivara....",
+                      border: OutlineInputBorder(),
+                      suffixIcon: Icon(Icons.ballot)),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
                 ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -43,7 +49,16 @@ class _mainScreenState extends State<mainScreen> {
                               builder: (context) =>
                                   tela2(str: _controller.text)));
                     },
-                    child: const Text("Gerar"))
+                    child: const Text("Gerar")),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => tela3()));
+                    },
+                    child: const Text("Ler QR"))
               ],
             )));
   }
